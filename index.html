@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Control Panel</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+
+  <body>
+    <div class="topnav">
+      <h1>DGG r/Place Control Panel</h1>
+    </div>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="numbers" onclick="showTab('numbers')">
+        Days
+      </div>
+      <div class="tab" data-tab="months" onclick="showTab('months')">
+        Months
+      </div>
+    </div>
+
+    <div class="content" id="numbersContent">
+      <!-- Numbers -->
+    </div>
+
+    <div class="content" id="monthsContent" style="display: none">
+      <!-- Months -->
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

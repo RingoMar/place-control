@@ -1,0 +1,94 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  background-color: #202833;
+}
+
+.topnav {
+  background-color: #0b0c10;
+  overflow: hidden;
+}
+
+.topnav h1 {
+  color: #66fcf1;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.tab {
+  padding: 10px 20px;
+  background-color: #46a29f;
+  color: #367877;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #66fcf1;
+  color: #41c0b7;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.number-container,
+.months-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number-content,
+.months-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 10em;
+  height: 10em;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #39f8ea;
+  color: #feffff;
+  cursor: pointer;
+}
+
+.months-content {
+  width: 100%;
+  min-width: 270px;
+  height: 270px;
+  white-space: nowrap;
+  font-size: 50px;
+}
+
+.number-content {
+  font-size: 7em;
+  width: 160px;
+  height: 160px;
+}
+
+.bottom {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 5px;
+  width: 100%;
+  display: flex;
+  background-color: #39f8ea;
+  justify-content: center;
+  color: #feffff;
+}
