@@ -13,7 +13,7 @@ body {
 }
 
 .topnav h1 {
-  color: #66fcf1;
+  color: #3690ea;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -28,14 +28,14 @@ body {
 
 .tab {
   padding: 10px 20px;
-  background-color: #46a29f;
-  color: #367877;
+  background-color: #3690ea;
+  color: white;
   cursor: pointer;
 }
 
 .tab.active {
-  background-color: #66fcf1;
-  color: #41c0b7;
+  background-color: #3690ea;
+  color: white;
 }
 
 .content {
@@ -62,7 +62,7 @@ body {
   height: 10em;
   font-size: 24px;
   font-weight: bold;
-  background-color: #39f8ea;
+  background-color: #3690ea;
   color: #feffff;
   cursor: pointer;
 }
@@ -88,7 +88,7 @@ body {
   margin-top: 5px;
   width: 100%;
   display: flex;
-  background-color: #39f8ea;
+  background-color: #3690ea;
   justify-content: center;
   color: #feffff;
 }
