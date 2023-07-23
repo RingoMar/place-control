@@ -73,7 +73,7 @@ function startCountdown(container) {
   backgroundEl.style.backgroundColor = "grey";
   backgroundEl.style.color = "#939393";
 
-  let count = 300; // 5 minutes in seconds (5 minutes * 60 seconds)
+  let count = 240; // 4 minutes in seconds (4 minutes * 60 seconds)
   const countdownInterval = setInterval(() => {
     const minutes = Math.floor(count / 60);
     const seconds = count % 60;
