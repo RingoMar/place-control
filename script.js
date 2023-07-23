@@ -118,3 +118,40 @@ const monthContainers = document.querySelectorAll(".months-container");
 monthContainers.forEach((container) => {
   container.addEventListener("click", handleClick);
 });
+
+function pipe() {
+  var audio = new Audio('./pipe.opus');
+  audio.volume = 0.2;
+  audio.play();
+}
+
+const nathanWmonthContainer = document.createElement("div");
+nathanWmonthContainer.className = "months-container";
+monthsContent.appendChild(nathanWmonthContainer);
+
+const nathanWmonthDiv = document.createElement("img");
+nathanWmonthDiv.className = "months-content boxborder";
+nathanWmonthDiv.src = './nathanw.png'
+nathanWmonthContainer.appendChild(nathanWmonthDiv);
+
+const nathanWbottomDiv = document.createElement("div");
+nathanWbottomDiv.className = "bottom";
+nathanWbottomDiv.textContent = "Ready";
+nathanWmonthContainer.appendChild(nathanWbottomDiv);
+nathanWmonthContainer.addEventListener("click", pipe);
+
+// Numbers
+const nathanWnumberContainer = document.createElement("div");
+nathanWnumberContainer.className = "number-container";
+numbersContent.appendChild(nathanWnumberContainer);
+
+const nathanWnumberDiv = document.createElement("img");
+nathanWnumberDiv.className = "number-content boxborder";
+nathanWnumberDiv.src = './nathanw.png'
+nathanWnumberContainer.appendChild(nathanWnumberDiv);
+
+const nathanWbottomDiv2 = document.createElement("div");
+nathanWbottomDiv.className = "bottom";
+nathanWbottomDiv.textContent = "Ready";
+nathanWnumberContainer.appendChild(nathanWbottomDiv);
+nathanWnumberContainer.addEventListener("click", pipe);
