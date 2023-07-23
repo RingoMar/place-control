@@ -93,12 +93,37 @@ function startCountdown(container) {
       // Re-add the click event listener
       container.addEventListener("click", handleClick);
     }
-  }, 1000); 
+  }, 1000);
 
   // Remove the click event listener to prevent multiple countdowns
   container.removeEventListener("click", handleClick);
 }
 
+function handleStartAll() {
+  const numberContainers = document.querySelectorAll(".number-container");
+
+  for (let i = 0; i < numberContainers.length; i++) {
+    const container = numberContainers[i];
+    const bottomElement = container.querySelector(".bottom");
+
+    // ignore started containers
+    if (bottomElement.hasAttribute("style")) continue;
+
+    startCountdown(container);
+  }
+
+  const monthContainers = document.querySelectorAll(".months-container");
+
+  for (let i = 0; i < monthContainers.length; i++) {
+    const container = monthContainers[i];
+    const bottomElement = container.querySelector(".bottom");
+
+    // ignore started containers
+    if (bottomElement.hasAttribute("style")) continue;
+
+    startCountdown(container);
+  }
+}
 
 function removeInlineStyles(element) {
   element.removeAttribute("style");
