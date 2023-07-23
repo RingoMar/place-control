@@ -73,7 +73,7 @@ function startCountdown(container) {
   backgroundEl.style.backgroundColor = "grey";
   backgroundEl.style.color = "#939393";
 
-  let count = 300; // 5 minutes in seconds (5 minutes * 60 seconds)
+  let count = 240; // 4 minutes in seconds (4 minutes * 60 seconds)
   const countdownInterval = setInterval(() => {
     const minutes = Math.floor(count / 60);
     const seconds = count % 60;
@@ -84,7 +84,7 @@ function startCountdown(container) {
 
     if (count < 0) {
       clearInterval(countdownInterval);
-      bottomElement.innerText = "Ready"; // Change the text to "Ready" after the countdown is complete
+      bottomElement.innerText = "Ready";
 
       // Remove the inline styles
       removeInlineStyles(bottomElement);
@@ -93,11 +93,12 @@ function startCountdown(container) {
       // Re-add the click event listener
       container.addEventListener("click", handleClick);
     }
-  }, 1000); // Update the countdown every second
+  }, 1000); 
 
   // Remove the click event listener to prevent multiple countdowns
   container.removeEventListener("click", handleClick);
 }
+
 
 function removeInlineStyles(element) {
   element.removeAttribute("style");
