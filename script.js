@@ -33,23 +33,105 @@ for (let i = 1; i <= 31; i++) {
   numberContainer.appendChild(bottomDiv);
 }
 
+const monthTranslations = {
+  en: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ],
+  fr: [
+    "Janvier",
+    "Février",
+    "Mars",
+    "Avril",
+    "Mai",
+    "Juin",
+    "Juillet",
+    "Août",
+    "Septembre",
+    "Octobre",
+    "Novembre",
+    "Décembre",
+  ],
+  de: [
+    "Januar",
+    "Februar",
+    "März",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Dezember",
+  ],
+  es: [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ],
+  pt: [
+    "Janeiro",
+    "Fevereiro",
+    "Março",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro",
+  ],
+};
+
+const languageTranslations = {
+  en: { days: "Days", months: "Months", ready: "Ready" },
+  fr: { days: "Jours", months: "Mois", ready: "Prêt" },
+  de: { days: "Tage", months: "Monate", ready: "Bereit" },
+  es: { days: "Días", months: "Meses", ready: "Listo" },
+  pt: { days: "Dias", months: "Meses", ready: "Pronto" },
+};
+
+function getCurrentLanguageCode() {
+  const htmlLang = document.documentElement.lang.toLowerCase();
+  return htmlLang;
+}
+
+function getTranslatedMonths() {
+  const currentLanguageCode = getCurrentLanguageCode();
+  if (monthTranslations.hasOwnProperty(currentLanguageCode)) {
+    return monthTranslations[currentLanguageCode];
+  } else {
+    return monthTranslations["en"];
+  }
+}
+
 // Create month elements
 const monthsContent = document.getElementById("monthsContent");
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-for (const month of months) {
+const translatedMonths = getTranslatedMonths();
+for (const month of translatedMonths) {
   const monthContainer = document.createElement("div");
   monthContainer.className = "months-container";
   monthsContent.appendChild(monthContainer);
@@ -84,7 +166,8 @@ function startCountdown(container) {
 
     if (count < 0) {
       clearInterval(countdownInterval);
-      bottomElement.innerText = "Ready";
+      bottomElement.innerText =
+        languageTranslations[getCurrentLanguageCode()].ready;
 
       // Remove the inline styles
       removeInlineStyles(bottomElement);
@@ -93,12 +176,11 @@ function startCountdown(container) {
       // Re-add the click event listener
       container.addEventListener("click", handleClick);
     }
-  }, 1000); 
+  }, 1000);
 
   // Remove the click event listener to prevent multiple countdowns
   container.removeEventListener("click", handleClick);
 }
-
 
 function removeInlineStyles(element) {
   element.removeAttribute("style");
@@ -119,3 +201,33 @@ const monthContainers = document.querySelectorAll(".months-container");
 monthContainers.forEach((container) => {
   container.addEventListener("click", handleClick);
 });
+
+function changeLanguage() {
+  const langSelect = document.getElementById("langSelect");
+  const selectedLanguage = langSelect.value;
+
+  document.documentElement.lang = selectedLanguage;
+
+  const translatedStrings = languageTranslations[selectedLanguage];
+
+  const tabs = document.querySelectorAll(".tab");
+  for (const tab of tabs) {
+    const dataTab = tab.getAttribute("data-tab");
+    if (dataTab === "numbers") {
+      tab.textContent = translatedStrings.days;
+    } else if (dataTab === "months") {
+      tab.textContent = translatedStrings.months;
+    }
+  }
+
+  const translatedMonths = getTranslatedMonths();
+  const monthContainers = document.querySelectorAll(".months-content");
+  for (let i = 0; i < monthContainers.length; i++) {
+    monthContainers[i].textContent = translatedMonths[i];
+  }
+
+  const bottomDivs = document.querySelectorAll(".bottom");
+  for (const bottomDiv of bottomDivs) {
+    bottomDiv.textContent = translatedStrings.ready;
+  }
+}
