@@ -47,6 +47,13 @@ body {
   color: white;
 }
 
+.button {
+  padding: 10px 20px;
+  background-color: #3690ea;
+  color: white;
+  cursor: pointer;
+}
+
 .content {
   display: flex;
   justify-content: center;
