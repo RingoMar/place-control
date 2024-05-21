@@ -1,30 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Panel</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-  </head>
 
-  <body>
-    <div class="topnav">
-      <img src="logo.ico" alt="Logo" height="30px" />
-      <h1>DGG r/Place Control Panel</h1>
-      <img src="dggl.webp" alt="Dggl" height="30px" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control Panel</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <div class="setPanel" style="display: none" id="settings">
+    <div class="buttonclose">
+      <button class="closebtn" title="Close Panel" onclick="settings_close()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffffff"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
+    <div class="header">
+      <h2 class="setHead">CONFIGURATION</h2>
+    </div>
+    <div class="cong-container">
+      <div class="curentTime">
+        <h3>DOWNTIME:</h3>
+        <h3 class="currentCooldown">00:00</h3>
+      </div>
+      <div class="tab-set" onclick="toggleTabContent()">
+        <span class="tab-icon"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+            fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg></span>
+        <h2 class="tab-text">Quick Time</h2>
+      </div>
+      <div class="tabcontent config-select" id="tabContent">
+        <select name="numbers-select" id="quickselect" class="numbers-select" onchange="quickselect()">
+          <option value="60">01:00</option>
+          <option value="120">02:00</option>
+          <option value="180">03:00</option>
+          <option value="240" selected>04:00</option>
+          <option value="300">05:00</option>
+        </select>
+      </div>
+      <div class="tab-set" onclick="toggleTabContent()">
+        <span class="tab-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"
+            fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
+            <line x1="3" y1="22" x2="21" y2="22"></line>
+          </svg></span>
+        <h2 class="tab-text">Custom Time</h2>
+      </div>
+      <div class="tabcontent" id="tabContent">
+        <div class="ucontainer">
+          <div class="uMin">
+            <input type="number" name="uMin" id="umin" min="0" />
+          </div>
+          <div class="uSec">
+            <input type="number" name="uSec" id="usec" min="0" max="59" />
+          </div>
+          <div class="minT">
+            <p>MINUTES</p>
+          </div>
+          <div class="secT">
+            <p>SECONDS</p>
+          </div>
+          <div class="updateButton">
+            <button class="button" onclick="updateCustom()">SAVE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div class="topnav">
+    <div class="heading">
+      <img src="logo.ico" alt="Logo" height="30px" />
+      <div class="textBranding">
+        <h1>DGG Panel</h1>
+        <h6>A r/Place Control Panel</h6>
+      </div>
+      <!-- <img src="dggl.webp" alt="Dggl" height="30px" /> -->
+    </div>
+    <div class="settings">
+      <button class="setbutton" title="Control Settings" onclick="settings_open()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#ffffff"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path
+            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+          </path>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <main>
     <div class="tabs">
       <div class="tab active" data-tab="numbers" onclick="showTab('numbers')">
-        Days
+        DAYS
       </div>
       <div class="tab" data-tab="months" onclick="showTab('months')">
-        Months
+        MONTHS
       </div>
       <div style="margin-left: 10px"></div>
-      <button class="button" data-button="all" onclick="handleStartAll()">
-        Start All
+      <button class="button defcon" data-button="all" onclick="handleStartAll()">
+        START ALL
       </button>
     </div>
 
@@ -38,6 +120,8 @@
     <div class="btc-container">
       <div id="btc-text" class="btc-text pixelated">+1 BTC</div>
     </div>
-    <script src="./script.js"></script>
-  </body>
+  </main>
+  <script src="./script.js"></script>
+</body>
+
 </html>

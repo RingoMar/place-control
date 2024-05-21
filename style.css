@@ -17,16 +17,42 @@ body {
   background-color: #0b0c10;
   overflow: hidden;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  padding-left: 50px;
+  background-color: #72b5e4;
+  margin-left: 3%;
+}
+
+.textBranding {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  margin: 0px 20px;
+}
+
+.textBranding > h1,
+.textBranding > h6 {
+  padding: 0;
+  margin: 0;
+}
+
+.textBranding > h6 {
+  font-size: xx-small;
+  color: #f8f6f6;
 }
 
 .topnav h1 {
-  color: #3690ea;
+  font-size: x-large;
+  color: white;
   text-align: center;
-  padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
 }
 
 .tabs {
@@ -40,6 +66,7 @@ body {
   background-color: #3690ea;
   color: white;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .tab.active {
@@ -53,6 +80,14 @@ body {
   color: white;
   cursor: pointer;
   border: 0;
+}
+
+.defcon {
+  border-radius: 10px 0px 10px 0px;
+}
+
+.defcon:active {
+  transform: scale(0.9);
 }
 
 .content {
@@ -94,10 +129,16 @@ body {
   font-size: 50px;
 }
 
+.number-content:active {
+  transform: scale(0.9);
+}
+
 .number-content {
   font-size: 7em;
   width: 160px;
   height: 160px;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 .bottom {
@@ -150,4 +191,204 @@ body {
     transform: translateX(10%) translateY(-54.9%);
     opacity: 0;
   }
+}
+
+.settings {
+  margin-right: 10px;
+}
+
+button.setbutton:active {
+  transform: scale(0.9);
+}
+
+button.setbutton {
+  width: 55px;
+  background-color: #5fa8ef;
+  border-radius: 0.25em;
+  border: none;
+  padding: 4px;
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.setPanel {
+  height: 100%;
+  width: 36.8vh;
+  position: fixed !important;
+  z-index: 1;
+  overflow: auto;
+  right: 0;
+  background-color: #1e2027;
+  color: white;
+  border-left: 1px solid #dfdddd30;
+  background-color: #202833;
+}
+
+.setPanel .header {
+  text-align: center;
+}
+
+h2.tab-text {
+  padding: 0;
+  margin: 0;
+}
+
+.setPanel .tab-set {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-bottom: 2px solid;
+  color: white;
+}
+
+.setPanel .tab-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.setPanel .tab-content {
+  display: none;
+}
+
+.setPanel input[type="number"] {
+  outline: none;
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.setPanel .tab-set.active + .tab-content {
+  display: block;
+}
+
+.setPanel .tab-set.active {
+  font-weight: bold;
+  border: #3690ea;
+}
+
+.closebtn:hover {
+  background-color: #66eded41;
+}
+
+.closebtn {
+  color: white;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+}
+
+.buttonclose {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  border-bottom: 2px solid #ffffff2f;
+}
+
+.setHead {
+  color: white;
+}
+
+.curentTime {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2em;
+  border: 2px dashed #66eded41;
+}
+
+.cong-container {
+  padding: 10px;
+}
+
+.currentCooldown {
+  color: #3690ea;
+  font-family: sans-serif;
+}
+
+.config-select {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.numbers-select {
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  border: 2px solid #66eded41;
+  font-size: medium;
+  color: white;
+  cursor: pointer;
+}
+
+.numbers-select > option::selection {
+  background-color: #0f7ae2;
+}
+
+.numbers-select > option {
+  background-color: #3690ea;
+  cursor: pointer;
+}
+
+.ucontainer {
+  padding: 10px;
+  border: 1px solid #66eded41;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 0.5fr 0.5fr;
+  grid-auto-columns: 1fr;
+  gap: 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "uMin uSec"
+    "minT secT"
+    "updateButton updateButton";
+  justify-items: center;
+}
+
+.updateButton {
+  grid-area: updateButton;
+  width: 100%;
+}
+
+.uMin {
+  grid-area: uMin;
+}
+
+.uSec {
+  grid-area: uSec;
+}
+
+.minT {
+  grid-area: minT;
+}
+
+.secT {
+  grid-area: secT;
+}
+
+.ucontainer p {
+  padding: 0;
+  margin: 0;
+  font-weight: 600;
+  font-size: small;
+}
+
+.ucontainer input {
+  border: 2px solid #72b5e4;
+  background-color: transparent;
+  color: white;
+  font-size: x-large;
+  align-items: center;
+}
+
+.ucontainer .button:active {
+  transform: scale(0.9);
+}
+
+.ucontainer .button {
+  width: 100%;
 }

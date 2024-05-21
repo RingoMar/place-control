@@ -1,3 +1,19 @@
+let hasSavedValue =
+  localStorage.getItem("count") !== null ? localStorage.getItem("count") : 240;
+let count = 0;
+
+function updateCurrentTime(timeInSec = 240) {
+  localStorage.setItem("count", timeInSec);
+  count = timeInSec;
+
+  let displayTime = new Date(timeInSec * 1000);
+  document.querySelector(".currentCooldown").textContent = displayTime
+    .toISOString()
+    .substr(14, 5);
+  document.getElementById("umin").value = displayTime.getMinutes();
+  document.getElementById("usec").value = displayTime.getSeconds();
+}
+
 function showTab(tabName) {
   const tabs = document.getElementsByClassName("tab");
   for (const tab of tabs) {
@@ -32,6 +48,8 @@ for (let i = 1; i <= 31; i++) {
   bottomDiv.textContent = "Ready";
   numberContainer.appendChild(bottomDiv);
 }
+
+updateCurrentTime(hasSavedValue);
 
 // Create month elements
 const monthsContent = document.getElementById("monthsContent");
@@ -73,16 +91,17 @@ function startCountdown(container) {
   backgroundEl.style.backgroundColor = "grey";
   backgroundEl.style.color = "#939393";
 
-  let count = 240; // 4 minutes in seconds (4 minutes * 60 seconds)
+  // let count = 240; // 4 minutes in seconds (4 minutes * 60 seconds)
+  let localCount = count;
   const countdownInterval = setInterval(() => {
-    const minutes = Math.floor(count / 60);
-    const seconds = count % 60;
+    const minutes = Math.floor(localCount / 60);
+    const seconds = localCount % 60;
     bottomElement.innerText = `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}`;
-    count--;
+    localCount--;
 
-    if (count < 0) {
+    if (localCount < 0) {
       clearInterval(countdownInterval);
       bottomElement.innerText = "Ready";
 
@@ -144,3 +163,31 @@ const monthContainers = document.querySelectorAll(".months-container");
 monthContainers.forEach((container) => {
   container.addEventListener("click", handleClick);
 });
+
+document.querySelector("main").addEventListener("click", function () {
+  let settingsContainer = document.getElementById("settings").style.display;
+  if (settingsContainer === "block") {
+    document.getElementById("settings").style.display = "none";
+  }
+});
+
+function settings_open() {
+  document.getElementById("settings").style.display = "block";
+}
+
+function settings_close() {
+  document.getElementById("settings").style.display = "none";
+}
+
+function quickselect() {
+  updateCurrentTime(document.getElementById("quickselect").value);
+  // console.log(document.getElementById("quickselect").value);
+}
+
+function updateCustom() {
+  let seconds = parseInt(document.getElementById("usec").value);
+  let minutes = parseInt(document.getElementById("umin").value);
+  let totalSeconds = (seconds + minutes * 60) % 3600;
+
+  updateCurrentTime(totalSeconds);
+}
