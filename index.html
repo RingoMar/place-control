@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Control Panel</title>
+  <title id="pageTitle">Control Panel</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 </head>
@@ -21,11 +21,11 @@
       </button>
     </div>
     <div class="header">
-      <h2 class="setHead">CONFIGURATION</h2>
+      <h2 class="setHead" data-i18n="configuration">CONFIGURATION</h2>
     </div>
     <div class="cong-container">
       <div class="curentTime">
-        <h3>DOWNTIME:</h3>
+        <h3 data-i18n="downtime">DOWNTIME:</h3>
         <h3 class="currentCooldown">00:00</h3>
       </div>
       <div class="tab-set" onclick="toggleTabContent()">
@@ -34,7 +34,7 @@
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg></span>
-        <h2 class="tab-text">Quick Time</h2>
+        <h2 class="tab-text" data-i18n="quickTime">Quick Time</h2>
       </div>
       <div class="tabcontent config-select" id="tabContent">
         <select name="numbers-select" id="quickselect" class="numbers-select" onchange="quickselect()">
@@ -51,7 +51,7 @@
             <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
             <line x1="3" y1="22" x2="21" y2="22"></line>
           </svg></span>
-        <h2 class="tab-text">Custom Time</h2>
+        <h2 class="tab-text" data-i18n="customTime">Custom Time</h2>
       </div>
       <div class="tabcontent" id="tabContent">
         <div class="ucontainer">
@@ -62,14 +62,36 @@
             <input type="number" name="uSec" id="usec" min="0" max="59" />
           </div>
           <div class="minT">
-            <p>MINUTES</p>
+            <p data-i18n="minutes">MINUTES</p>
           </div>
           <div class="secT">
-            <p>SECONDS</p>
+            <p data-i18n="seconds">SECONDS</p>
           </div>
           <div class="updateButton">
-            <button class="button" onclick="updateCustom()">SAVE</button>
+            <button class="button" onclick="updateCustom()" data-i18n="save">SAVE</button>
           </div>
+        </div>
+      </div>
+      <div class="tab-set">
+        <span class="tab-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+            </path>
+          </svg></span>
+        <h2 class="tab-text" data-i18n="translate">Translate</h2>
+      </div>
+      <div class="tabcontent config-select">
+        <div class="translate-select">
+          <label for="languageSelect" data-i18n="language">Language</label>
+          <select id="languageSelect" class="numbers-select" onchange="setLanguage(this.value)">
+            <option value="en" data-i18n="languageEnglish">English</option>
+            <option value="es" data-i18n="languageSpanish">Spanish</option>
+            <option value="fr" data-i18n="languageFrench">French</option>
+            <option value="de" data-i18n="languageGerman">German</option>
+            <option value="ru" data-i18n="languageRussian">Russian</option>
+          </select>
         </div>
       </div>
     </div>
@@ -80,7 +102,7 @@
       <img src="logo.ico" alt="Logo" height="30px" />
       <div class="textBranding">
         <h1>DGG Panel</h1>
-        <h6>A r/Place Control Panel</h6>
+        <h6 data-i18n="subtitle">A r/Place Control Panel</h6>
       </div>
       <!-- <img src="dggl.webp" alt="Dggl" height="30px" /> -->
     </div>
@@ -98,14 +120,14 @@
   </div>
   <main>
     <div class="tabs">
-      <div class="tab active" data-tab="numbers" onclick="showTab('numbers')">
+      <div class="tab active" data-tab="numbers" onclick="showTab('numbers')" data-i18n="days">
         DAYS
       </div>
-      <div class="tab" data-tab="months" onclick="showTab('months')">
+      <div class="tab" data-tab="months" onclick="showTab('months')" data-i18n="months">
         MONTHS
       </div>
       <div style="margin-left: 10px"></div>
-      <button class="button defcon" data-button="all" onclick="handleStartAll()">
+      <button class="button defcon" data-button="all" onclick="handleStartAll()" data-i18n="startAll">
         START ALL
       </button>
     </div>

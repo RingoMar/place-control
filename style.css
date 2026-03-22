@@ -241,6 +241,7 @@ h2.tab-text {
   cursor: pointer;
   border-bottom: 2px solid;
   color: white;
+  padding-top: 1rem;
 }
 
 .setPanel .tab-icon {
@@ -312,6 +313,18 @@ h2.tab-text {
   width: 100%;
   display: flex;
   margin-bottom: 20px;
+}
+
+.translate-select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.translate-select label {
+  font-size: small;
+  font-weight: 600;
 }
 
 .numbers-select {
